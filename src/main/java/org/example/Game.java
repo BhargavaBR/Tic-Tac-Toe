@@ -13,29 +13,31 @@ public class Game {
 
     public Game(){}
 
-    public void getPlayersDetails(){
-        Scanner scanner = new Scanner(System.in);
+    public void getPlayersDetails(Scanner scanner) {
+
+        scanner.nextLine();
         System.out.println("Enter Player1 Name: ");
         String name = scanner.nextLine();
         Player player1 = new Player();
         player1.setName(name);
         player1.setSymbol('X');
+
         System.out.println("Enter Player2 Name: ");
         name = scanner.nextLine();
         Player player2 = new Player();
-        player1.setName(name);
-        player1.setSymbol('0');
-        players.addAll(List.of(player1,player2));
-        scanner.close();
+        player2.setName(name);
+        player2.setSymbol('0');
+
+        players.addAll(List.of(player1, player2));
+
     }
-    public void enterBoardDetails(){
-        Scanner scanner = new Scanner(System.in);
+
+    public void enterBoardDetails(Scanner scanner){
         System.out.println("Please Enter Board Dimension, Minimum Size 3 X 3");
         int dimension = scanner.nextInt();
         if(dimension < 3) dimension = 3;
         board = new Board(dimension);
         buildBoard(board);
-        scanner.close();
     }
 
     private void buildBoard(Board board) {
@@ -81,7 +83,7 @@ public class Game {
         int dimension = board.getDimension();
         for(int row=0;row<dimension;row++){
             for(int col=0;col<dimension;col++){
-                System.out.println("| "+board.getBoard()[row][col]+" |");
+                System.out.print("| "+board.getBoard()[row][col]+" |");
             }
             System.out.println();
         }
